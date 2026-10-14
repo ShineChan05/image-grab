@@ -1,0 +1,130 @@
+/* gallery.css —— 提取结果展示页样式 */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  background: #f4f5f7;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* ---------- 顶部工具栏 ---------- */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .08);
+  padding: 14px 24px;
+}
+.toolbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.toolbar h1 { font-size: 18px; font-weight: 600; margin-right: auto; }
+.actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.btn {
+  padding: 8px 16px;
+  border: 1px solid #d0d3d9;
+  border-radius: 8px;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, opacity .15s ease;
+}
+.btn:hover { background: #f5f6f8; border-color: #b9bdc4; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff6a00, #ff2d55);
+  border-color: transparent;
+  color: #fff;
+  font-weight: 600;
+}
+.btn-primary:hover { background: linear-gradient(135deg, #ff7a1a, #ff3d62); }
+
+.count { font-size: 14px; color: #666; min-width: 90px; }
+
+/* ---------- 进度与结果 ---------- */
+.progress-wrap { margin-top: 12px; }
+.progress-text { font-size: 13px; color: #666; margin-bottom: 6px; }
+.progress-bar { height: 8px; background: #e8eaed; border-radius: 999px; overflow: hidden; }
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ff6a00, #ff2d55);
+  transition: width .2s ease;
+}
+
+.result {
+  margin-top: 12px;
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #e6f7ee;
+  color: #178a50;
+}
+.result.has-error { background: #fdeeee; color: #c0392b; }
+
+.hidden { display: none !important; }
+
+/* ---------- 图片网格 ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 24px;
+}
+
+.card {
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .08);
+  cursor: pointer;
+  transition: box-shadow .15s ease, transform .15s ease;
+}
+.card:hover { box-shadow: 0 6px 18px rgba(0, 0, 0, .16); transform: translateY(-2px); }
+.card.selected { box-shadow: 0 0 0 2px #ff2d55; }
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  background: #f0f1f3;
+}
+
+.card .check {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 18px;
+  height: 18px;
+  accent-color: #ff2d55;
+  cursor: pointer;
+}
+
+.card .meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #888;
+}
+.card .seq { font-weight: 600; color: #bbb; }
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 0;
+  color: #999;
+  font-size: 15px;
+}
